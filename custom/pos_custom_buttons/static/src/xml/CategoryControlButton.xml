@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+   <t t-name="CategoryControlButton" owl="1">
+
+<!--       <script>-->
+<!--            alert("check");-->
+<!--       </script>-->
+<!--       <div id="reservationDiv" class="control-button">-->
+<!--           <i class="fa fa-list" role="img" aria-label="Categories"-->
+<!--              title="Categories"/>-->
+<!--           View Reservation-->
+<!--       </div>-->
+<!--       <button class="button set-partner">-->
+<!--&lt;!&ndash;                <t t-if="!env.isMobile"><i class="fa fa-user" role="img" aria-label="Customer" title="Customer" /></t>&ndash;&gt;-->
+<!--&lt;!&ndash;                <t t-if="isReservation">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <t t-attf-value="_reservationRef()" />&ndash;&gt;-->
+<!--&lt;!&ndash;                </t>&ndash;&gt;-->
+<!--&lt;!&ndash;                <t t-else>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <i class="fa fa-list" role="img" aria-label="Categories"&ndash;&gt;-->
+<!--&lt;!&ndash;                    title="Categories"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                    Reservation&ndash;&gt;-->
+<!--&lt;!&ndash;                </t>&ndash;&gt;-->
+<!--                <i class="fa fa-list" role="img" aria-label="Reservation"-->
+<!--                title="Reservation"/>-->
+<!--                <t t-att-value="Reservation" />-->
+<!--       </button>-->
+        <div id="reservationDiv" class="control-button">
+           <button style="font-size: 18px !important;" id="reservationDiv" class="button set-partner" t-att-class="{'decentered': isLongName}"
+                        t-on-click="() => this.trigger('click-reservation')">
+                    <i class="fa fa-list" role="img" aria-label="Reservation"/>
+                    <t t-if="isReservation">
+                        <t t-esc="_reservationRef" />
+                    </t>
+                    <t t-else="">
+                        Reservation
+                    </t>
+    <!--                Reservation-->
+           </button>
+       </div>
+
+   </t>
+</templates>

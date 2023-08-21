@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hotel_request_group,hotel.request.user,model_hotel_request,hotel.group_hotel_user,1,1,1,1
+access_hotel_request_line_group,hotel.request.line.user,model_hotel_request_line,hotel.group_hotel_user,1,1,1,1
+access_hotel_checkin_group,hotel.checkin.user,model_hotel_checkin,hotel.group_hotel_user,1,1,1,1
+access_hotel_check_line_group,hotel.checkin.line.user,model_hotel_checkin_line,hotel.group_hotel_user,1,1,1,1

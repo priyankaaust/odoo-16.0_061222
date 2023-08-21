@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <!--======== Building ======== -->
+    <!-- Form view of trainer type -->
+    <record id="view_trainer_type_form" model="ir.ui.view">
+        <field name="name">trainer.type.form</field>
+        <field name="model">trainer.type</field>
+        <field name="arch" type="xml">
+            <form string="Trainer Type">
+                <sheet>
+                    <group>
+                        <field name="name" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_trainer_type_tree" model="ir.ui.view">
+        <field name="name">trainer.type.tree</field>
+        <field name="model">trainer.type</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_trainer_name_form" model="ir.ui.view">
+        <field name="name">trainer.name.form</field>
+        <field name="model">trainer.name</field>
+        <field name="arch" type="xml">
+            <form string="Trainer Name">
+                <sheet>
+                    <group>
+                        <field name="name" />
+                        <field name="trainer_type_id" />
+                        <field name="company_id" />
+                         <field name="active" />
+                        <field name="pin" />
+                        <field name="note" />
+                        <field name="partner_id" invisible="1" />
+                        <!-- <field name="training_id" string="Training" invisible="1"/> -->
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_trainer_name_tree" model="ir.ui.view">
+        <field name="name">trainer.name.tree</field>
+        <field name="model">trainer.name</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+                <field name="company_id" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_trainer_info_form" model="ir.ui.view">
+        <field name="name">training.info.form</field>
+        <field name="model">training.info</field>
+        <field name="arch" type="xml">
+            <form string="Trainer Name">
+                <sheet>
+                    <group>
+                        <field name="name" />
+                        <field name="company_id" />
+                        <field name="active" />
+                    </group>
+                    <notebook>
+                        <page name="trainer_lines" string='Trainer Information'>
+                            <field name="trainer_lines">
+                                <form string="Trainer Information">
+                                    <group>
+                                    <field name="trainer_id"
+                                    />
+                                    <field name="from_date" />
+                                    <field name="to_date" />
+                                    </group>
+                                </form>
+                                <tree string="Trainer Information">
+                                    <field name="trainer_id" />
+                                    <field name="from_date" />
+                                    <field name="to_date" />
+                                </tree>
+
+                            </field>
+                        </page>>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_training_info_tree" model="ir.ui.view">
+        <field name="name">training.info.tree</field>
+        <field name="model">training.info</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+                <field name="company_id" />
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="action_trainer_type_all" model="ir.actions.act_window">
+        <field name="name">Trainer Type</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">trainer.type</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <record id="action_trainer_name_all" model="ir.actions.act_window">
+        <field name="name">Trainer Name</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">trainer.name</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="action_training_name_all" model="ir.actions.act_window">
+        <field name="name">Training Information</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">training.info</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <menuitem
+        id="menu_new_training_details"
+        name="Training Details"
+        parent="hotel.hotel_configuration_menu"
+        sequence="10"
+    />
+
+    <menuitem
+        name="Training Type"
+        id="menu_trainer_type_all"
+        action="action_trainer_type_all"
+        parent="menu_new_training_details"
+        sequence="1"
+    />
+
+    <menuitem
+        name="Trainer Name"
+        id="menu_trainer_name_all"
+        action="action_trainer_name_all"
+        parent="menu_new_training_details"
+        sequence="2"
+    />
+
+    <menuitem
+        name="Training Name"
+        id="menu_training_name_all"
+        action="action_training_name_all"
+        parent="menu_new_training_details"
+        sequence="3"
+    />
+
+
+
+</odoo>

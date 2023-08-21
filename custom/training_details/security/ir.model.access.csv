@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_trainer_type_group,trainer.type.user,model_trainer_type,hotel.group_hotel_user,1,1,1,0
+access_trainer_name_group,trainer.name.user,model_trainer_name,hotel.group_hotel_user,1,1,1,0
+access_training_info_group,training.info.user,model_training_info,hotel.group_hotel_user,1,1,1,0
+access_training_info_line_group,training.info.line.user,model_training_info_line,hotel.group_hotel_user,1,1,1,0

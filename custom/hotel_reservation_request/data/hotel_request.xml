@@ -1,0 +1,16 @@
+<odoo noupdate="1">
+    <!-- Sequences for hotel folio -->
+    <record id="seq_hotel_request" model="ir.sequence">
+        <field name="name">Hotel Request</field>
+        <field name="code">hotel.request</field>
+        <field name="prefix">Req/</field>
+        <field name="padding">5</field>
+    </record>
+
+    <record id="seq_hotel_checkin" model="ir.sequence">
+        <field name="name">Hotel Checkin</field>
+        <field name="code">hotel.checkin</field>
+        <field name="prefix">CIN/</field>
+        <field name="padding">5</field>
+    </record>
+</odoo>

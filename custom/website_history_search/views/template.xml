@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+		<template id="assets_frontend_website_search_history" inherit_id="web.assets_frontend" >
+			<xpath expr="." position="inside">		
+				<script  type="text/javascript"  src="/website_history_search/static/src/js/website_history_search.js"></script>
+			</xpath>
+		</template>
+		
+</odoo>

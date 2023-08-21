@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+
+    <record id='view_extend_hotel_reservation_form' model='ir.ui.view'>
+        <field name="name">hotel.reservation.form</field>
+        <field name="model">hotel.reservation</field>
+        <field name="inherit_id" ref="hotel_reservation.view_hotel_reservation_form"/>
+        <field name="arch" type="xml">
+
+            <field name="company_id" position="after">
+                <field name="training_id"/>
+            </field>
+        </field>
+    </record>
+
+    <!-- ======== Request ======== -->
+    <!-- Form view of hotel request -->
+    <record id="view_hotel_request_form" model="ir.ui.view">
+        <field name="name">hotel.request.form</field>
+        <field name="model">hotel.request</field>
+        <field name="arch" type="xml">
+            <form string="Request">
+                <header>
+                    <button
+                        name="create_reservation"
+                        string="Create Reservation"
+                        states="draft"
+                        class="oe_highlight"
+                        type="object"
+                    />
+                    <field name="state" widget="statusbar" />
+                </header>
+                <sheet>
+                    <label for='request_no' string="Request No" />
+                    <h1>
+                        <field name="request_no" class="oe_inline" />
+                    </h1>
+                    <group>
+                        <group>
+                            <field name="date_order" />
+                            <field name="company_id" />
+                            <field name="reservation_id" />
+                        </group>
+                        <separator />
+                        <group string="Reservation Details" colspan="4">
+                            <group>
+                                <field name="reservation_type" widget="radio"/>
+                                <field name="checkin" />
+                                <field name="adults" required="1" />
+                            </group>
+                            <group>
+                                <field name="reservation_purpose" widget="radio"/>
+                                <field name="checkout" />
+                                <field name="children" />
+                            </group>
+
+                        </group>
+
+                        <group string="Requested By">
+                            <field name="partner_name" />
+                            <field name="partner_pin" />
+                        </group>
+                        <group string="Training Details">
+                            <field name="training_id" />
+                            <field name="training_checkin" />
+                            <field name="training_checkout" />
+                            <field name="training_conducted" />
+                            <field name="facilitator_pin" />
+
+                        </group>
+
+
+
+                    </group>
+                    <notebook>
+                        <page name="request_line" string='Request Line'>
+                            <field name="request_line" colspan="4" nolabel="1">
+                                <form string="Request Line">
+                                    <separator string="Room Type" />
+                                    <field name="name" invisible="1" />
+                                    <field name="categ_id" colspan="4" nolabel="1" />
+                                    <field name="checkin" />
+                                    <field name="checkout" />
+                                    <field name="adults" required="1" />
+                                    <field name="children"/>
+                                    <newline />
+                                    <separator string="Select Room" />
+                                    <!--<field
+                                        name="request"
+                                        colspan="4"
+                                        string="Room Number"
+                                        nolabel="1"
+                                    />-->
+                                </form>
+                                <tree>
+                                    <!--
+                                    <field
+                                        name="request"
+                                        string="Rooms"
+                                        widget="many2many_tags"
+                                    /> -->
+                                    <field name="categ_id" colspan="4" nolabel="1" />
+                                    <field name="checkin" aria-label="Check In"/>
+                                    <field name="checkout" aria-label="Check Out" />
+                                </tree>
+                            </field>
+                        </page>
+                        <page name="history" string='History'>
+                            <!-- <field name='folio_id' readonly='1' />-->
+                            <field name='note' />
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree view of hotel request -->
+    <record id="view_hotel_request_tree" model="ir.ui.view">
+        <field name="name">hotel.request.tree</field>
+        <field name="model">hotel.request</field>
+        <field name="arch" type="xml">
+            <tree
+                decoration-bf="state == 'draft'"
+                decoration-info="state == 'done'"
+                decoration-muted="state=='cancel'">
+                <field name="request_no" />
+                <!-- <field name="partner_id" /> -->
+                <field name="partner_name" />
+                <field name="checkin" />
+                <field name="checkout" />
+                <field name="state" />
+            </tree>
+        </field>
+    </record>
+
+    <!--     Calendar view of hotel reservation -->
+    <record id="hotel_request_calendar_view" model="ir.ui.view">
+        <field name="name">Reservation Requests</field>
+        <field name="model">hotel.request</field>
+        <field name="priority" eval="2" />
+        <field name="arch" type="xml">
+            <calendar string="Current Reservation Request"  date_start="checkin" date_stop="checkout" color="partner_name" mode = "month">
+                <field name="partner_name" />
+
+            </calendar>
+
+
+
+        </field>
+    </record>
+
+
+    <!-- Action of hotel reservation -->
+    <record id="action_hotel_request_all" model="ir.actions.act_window">
+        <field name="name">Reservation Requests</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hotel.request</field>
+        <field name="view_mode">tree,form,calendar</field>
+    </record>
+    <menuitem
+        id="menu_hotel_request"
+        name="Reservation Requests"
+        parent="hotel.hotel_management_menu"
+        sequence="1"
+    />
+    <menuitem
+        name="Reservation Requests"
+        id="menu_hotel_request_all"
+        action="action_hotel_request_all"
+        parent="menu_hotel_request"
+        sequence="1"
+    />
+
+
+</odoo>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_reservation_checkout_form" model="ir.ui.view">
+        <field name="name">hotel.reservation.checkout.form</field>
+        <field name="model">hotel.reservation.checkout</field>
+        <field name="arch" type="xml">
+            <form string="CheckOut Information">
+                <header>
+                    <field name="state" widget="statusbar" />
+                </header>
+                <sheet>
+                    <group>
+                        <group colspan="4" col="4">
+                            <field name="date_order" />
+                            <field name="request_id" />
+<!--                            <field name="company_id" />-->
+                        </group>
+<!--                        <group colspan="4" col="4">-->
+<!--                            <field name="partner_id" />-->
+<!--                            <field name="training_id" />-->
+<!--                        </group>-->
+                    </group>
+                    <notebook>
+<!--                        <page name="checkout_lines" string='CheckOut Line'>-->
+<!--                            <field name="checkout_lines" delete="0" colspan="4" nolabel="1">-->
+<!--                                <tree editable="bottom">-->
+<!--                                    <field name="checkin_date" />-->
+<!--                                    <field name="checkout_date" />-->
+<!--                                    <field name="folio_id"/>-->
+<!--                                    <field name="reservation_id"/>-->
+<!--                                    <field name="partner_id"/>-->
+<!--                                    <field name="amount_total"/>-->
+<!--                                    <field name="isCheckOut"/>-->
+<!--                                </tree>-->
+<!--                            </field>-->
+<!--                        </page>-->
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <record id="view_reservation_checkout_tree" model="ir.ui.view">
+        <field name="name">hotel.reservation.checkout.tree</field>
+        <field name="model">hotel.reservation.checkout</field>
+        <field name="arch" type="xml">
+            <tree>
+<!--                <field name="request_id" />-->
+                <field name="date_order" />
+<!--                <field name="partner_id" />-->
+<!--                <field name="checkout" />-->
+<!--                <field name="state" />-->
+            </tree>
+        </field>
+    </record>
+
+        <!-- Action of hotel reservation -->
+    <record id="action_hotel_reservation_checkout_all" model="ir.actions.act_window">
+        <field name="name">Room CheckOut</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hotel.reservation.checkout</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem
+        name="Room CheckOut"
+        id="menu_action_hotel_reservation_checkout_all"
+        action="action_hotel_reservation_checkout_all"
+        parent="menu_hotel_reservation"
+        sequence="3"
+    />
+
+</odoo>
